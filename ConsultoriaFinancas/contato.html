@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Contato - Consultoria Finanças</title>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  <link rel="stylesheet" href="styles.css">
+
+  <style>
+  .form-container {
+  background-color: #007bff;
+  padding: 30px;
+  border-radius: 10px;
+  }
+
+  {
+  background-image: url('background');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  padding: 50px 0;
+  color: blue;
+  }
+
+  .navbar {
+    background-color: #007bff;
+  }
+
+  footer {
+    background-color: #007bff; /* Cor do rodapé azul */
+    color: white; /* Cor do texto no rodapé */
+  }
+  .footer-links a {
+    color: white
+  }
+
+  </style>
+
+
+
+</head>
+<body>
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <a class="navbar-brand" href="index.html">Consultoria Finanças</a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse" id="navbarNav">
+    <ul class="navbar-nav ml-auto">
+      <li class="nav-item">
+        <a class="nav-link" href="index.html">Home</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="contato.html">Contato</a>
+      </li>
+    </ul>
+  </div>
+</nav>
+
+<section id="section2" class="form-container py-5 bg-light">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-6 offset-md-3">
+        <h2 class="text-center">Entre em contato conosco para falar sobre as suas necessidades...</h2>
+        <form id="contactForm">
+          <div class="form-group">
+            <input type="text" class="form-control" name="firstName" placeholder="Nome *" required maxlength="40">
+          </div>
+          <div class="form-group">
+            <input type="text" class="form-control" name="lastName" placeholder="Sobrenome *" required maxlength="40">
+          </div>
+          <div class="form-group">
+            <input type="tel" class="form-control" name="phone" placeholder="Telefone *" required maxlength="15">
+          </div>
+          <div class="form-group">
+            <input type="email" class="form-control" name="email" placeholder="Email *" required maxlength="50">
+            <div class="invalid-feedback">Por favor, insira um email válido.</div>
+          </div>
+          <div class="form-group">
+            <input type="text" class="form-control" name="cpf" placeholder="CPF *" required maxlength="14">
+            <div class="invalid-feedback">Por favor, insira um CPF válido.</div>
+          </div>
+          <div class="form-group">
+            <input type="text" class="form-control" name="cnpj" placeholder="CNPJ *" required maxlength="18">
+            <div class="invalid-feedback">Por favor, insira um CNPJ válido.</div>
+          </div>
+          <div class="form-group">
+            <input type="text" class="form-control" name="cep" placeholder="CEP *" required maxlength="9" id="cep">
+          </div>
+          <div class="form-group">
+            <input type="text" class="form-control" name="rua" placeholder="Rua *" required maxlength="100" id="rua">
+          </div>
+          <div class="form-group">
+            <input type="text" class="form-control" name="bairro" placeholder="Bairro *" required maxlength="50" id="bairro">
+          </div>
+          <div class="form-group">
+            <input type="text" class="form-control" name="cidade" placeholder="Cidade *" required maxlength="50" id="cidade">
+          </div>
+          <div class="form-group">
+            <input type="text" class="form-control" name="estado" placeholder="Estado *" required maxlength="2" id="estado">
+          </div>
+          <div class="form-group">
+            <input type="text" class="form-control" name="numero" placeholder="Número *" id="numero">
+          </div>
+          <div class="form-group form-check">
+            <input type="checkbox" class="form-check-input" id="semNumero" name="semNumero">
+            <label class="form-check-label" for="semNumero">Sem número</label>
+          </div>
+          <button type="submit" class="btn btn-primary btn-block">Enviar</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer class="text-center py-4 bg-light">
+  <p>&copy; 2024 Consultoria Finanças. Todos os direitos reservados.</p>
+</footer>
+
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+<script>
+  function validateCPF(cpf) {
+    cpf = cpf.replace(/[^\d]+/g,'');
+    if(cpf == '') return false;
+    if (cpf.length != 11 ||
+      cpf == "00000000000" ||
+      cpf == "11111111111" ||
+      cpf == "22222222222" ||
+      cpf == "33333333333" ||
+      cpf == "44444444444" ||
+      cpf == "55555555555" ||
+      cpf == "66666666666" ||
+      cpf == "77777777777" ||
+      cpf == "88888888888" ||
+      cpf == "99999999999")
+      return false;
+    add = 0;
+    for (i=0; i < 9; i ++)
+      add += parseInt(cpf.charAt(i)) * (10 - i);
+    rev = 11 - (add % 11);
+    if (rev == 10 || rev == 11)
+      rev = 0;
+    if (rev != parseInt(cpf.charAt(9)))
+      return false;
+    add = 0;
+    for (i = 0; i < 10; i ++)
+      add += parseInt(cpf.charAt(i)) * (11 - i);
+    rev = 11 - (add % 11);
+    if (rev == 10 || 11)
+      rev = 0;
+    if (rev != parseInt(cpf.charAt(10)))
+      return false;
+    return true;
+  }
+
+  function validateCNPJ(cnpj) {
+    cnpj = cnpj.replace(/[^\d]+/g,'');
+    if(cnpj == '') return false;
+    if (cnpj.length != 14)
+      return false;
+    if (cnpj == "00000000000000" ||
+      cnpj == "11111111111111" ||
+      cnpj == "22222222222222" ||
+      cnpj == "33333333333333" ||
+      cnpj == "44444444444444" ||
+      cnpj == "55555555555555" ||
+      cnpj == "66666666666666" ||
+      cnpj == "77777777777777" ||
+      cnpj == "88888888888888" ||
+      cnpj == "99999999999999")
+      return false;
+    tamanho = cnpj.length - 2
+    numeros = cnpj.substring(0,tamanho);
+    digitos = cnpj.substring(tamanho);
+    soma = 0;
+    pos = tamanho - 7;
+    for (i = tamanho; i < 12; i++) {
+      soma += numeros.charAt(i - pos) * i;
+    }
+    resultado = soma % 11 < 2 ? 0 : 11 - soma % 11;
+    if (resultado != digitos.charAt(0)) {
+      return false;
+    }
+    tamanho = tamanho + 1;
+    numeros = cnpj.substring(0,tamanho);
+    soma = 0;
+    pos = tamanho - 7;
+    for (i = tamanho; i < 13; i++) {
+      soma += numeros.charAt(i - pos) * i;
+    }
+    resultado = soma % 11 < 2 ? 0 : 11 - soma % 11;
+    if (resultado != digitos.charAt(1)) {
+      return false;
+    }
+    return true;
+  }
+
+  $(document).ready(function(){
+    $("#cep").on("blur", function(){
+      var cep = $(this).val().replace(/\D/g, '');
+      if (cep != "") {
+        $.getJSON("https://viacep.com.br/ws/"+ cep +"/json/?callback=?", function(dados) {
+          if (!("erro" in dados)) {
+            $("#rua").val(dados.logradouro);
+            $("#bairro").val(dados.bairro);
+            $("#cidade").val(dados.localidade);
+            $("#estado").val(dados.uf);
+          } else {
+            alert("CEP não encontrado.");
+          }
+        });
+      }
+    });
+
+    $("#semNumero").on("change", function(){
+      if ($(this).is(":checked")) {
+        $("#numero").attr("disabled", true).val("");
+      } else {
+        $("#numero").attr("disabled", false);
+      }
+    });
+
+    $("#contactForm").on("submit", function(event){
+      event.preventDefault();
+      var cpf = $("input[name='cpf']").val();
+      var cnpj = $("input[name='cnpj']").val();
+      if (!validateCPF(cpf)) {
+        alert("CPF inválido!");
+        return;
+      }
+      if (!validateCNPJ(cnpj)) {
+        alert("CNPJ inválido!");
+        return;
+      }
+      alert("Formulário enviado com sucesso!");
+    });
+  });
+</script>
+</body>
+</html>
